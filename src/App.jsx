@@ -15,22 +15,21 @@ function App() {
       const j = Math.floor(Math.random() * (i + 1));
       [numbers[i], numbers[j]] = [numbers[j], numbers[i]]; // Swap elements
     }
-  
     return numbers;
   }
   
-  const uniqueRandomNumbers = getRandomNumbersWithoutRepeating(119).slice(0, 30);
+  const uniqueRandomNumbers = getRandomNumbersWithoutRepeating(241).slice(0, 10);
   const randomTest = uniqueRandomNumbers?.map((index)=> data?.[index]);
-
+console.log(test);
   return (
     <div className="window">
       {!test ? <div className='choose'>
         <p>Test sonini tanlang.</p>
-        <button onClick={()=>setTest(120)}>120 ta To'liq test</button>
-        <button onClick={()=>setTest(30)}>30 ta random</button>
+        <button onClick={()=>setTest(242)}>242 ta To'liq test</button>
+        <button onClick={()=>setTest(10)}>10 ta random</button>
       </div>
       :
-      <FullTest data={test === 120 ? data : randomTest} />}
+      <FullTest data={test === 242 ? data : randomTest} />}
     </div>
   );
 }
