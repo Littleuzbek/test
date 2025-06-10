@@ -21,12 +21,15 @@ function App() {
   );
   const randomTest2 = uniqueRandomNumbers2?.map((index) => dataKpi?.[index]);
 
-  const uniqueRandomNumbers3 = getRandomNumbersWithoutRepeating(591).slice(
-    0,
-    20
-  );
-  const newTest = [...dataKpi, ...dataKorp];
-  const randomTest3 = uniqueRandomNumbers3?.map((index) => newTest?.[index]);
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        // Generate a random index between 0 and i
+        const j = Math.floor(Math.random() * (i + 1));
+        // Swap elements at i and j
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
   return (
     <div className="window">
@@ -37,7 +40,7 @@ function App() {
           <button onClick={() => setTest(10)}>10 ta random</button>
         </div>
       ) : (
-        <FullTest data={test === 242 ? dataKorp : randomTest} />
+        <FullTest data={test === 242 ? shuffleArray(dataKorp) : randomTest} />
       )}
 
       {!test2 ? (
@@ -47,7 +50,7 @@ function App() {
           <button onClick={() => setTest2(10)}>10 ta random</button>
         </div>
       ) : (
-        <FullTest data={test === 350 ? dataKorp : randomTest2} />
+        <FullTest data={test === 350 ? shuffleArray(dataKorp) : randomTest2} />
       )}
 
       {!test3 ? (
@@ -57,7 +60,7 @@ function App() {
           <button onClick={() => setTest3(20)}>20 ta random</button>
         </div>
       ) : (
-        <FullTest data={test === 592 ? newTest : randomTest3} />
+        <FullTest data={test === 592 ? shuffleArray([...dataKorp, ...dataKpi]) : [...randomTest, ...randomTest2]} />
       )}
     </div>
   );
