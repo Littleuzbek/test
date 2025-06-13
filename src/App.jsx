@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import FullTest from "./FullTest";
 import { dataKorp, dataKpi } from "./assets/data";
-import { getRandomNumbersWithoutRepeating } from "./extra";
+import { getRandomNumbersWithoutRepeating, shuffleArray } from "./extra";
 
 function App() {
   const [test, setTest] = useState(false);
@@ -21,15 +21,7 @@ function App() {
   );
   const randomTest2 = uniqueRandomNumbers2?.map((index) => dataKpi?.[index]);
 
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        // Generate a random index between 0 and i
-        const j = Math.floor(Math.random() * (i + 1));
-        // Swap elements at i and j
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
+  
 
   return (
     <div className="window">

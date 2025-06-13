@@ -1,19 +1,19 @@
-import { useMemo, useState } from "react";
 import Option from "./Option";
+import { shuffleArray } from "./extra";
 
 export default function FullTest({data}) {
-
   return (
     <>
     {data?.map((e, index) => {
+      const shuffeledOptions = shuffleArray(e?.options);
         return (
           <div className="qScreen" key={index}>
             <p>{`${index + 1}. ` + e?.question}</p>
             <div className="options">
-              <Option letter={"A. "} option={e?.options[0]?.q} answer={e?.options[0]?.a}  />
-              <Option letter={"B. "} option={e?.options[1]?.q} answer={e?.options[1]?.a}  />
-              <Option letter={"C. "} option={e?.options[2]?.q} answer={e?.options[2]?.a}  />
-              <Option letter={"D. "} option={e?.options[3]?.q} answer={e?.options[3]?.a}  />
+              <Option letter={"A. "} option={shuffeledOptions[0]?.q} answer={shuffeledOptions[0]?.a}  />
+              <Option letter={"B. "} option={shuffeledOptions[1]?.q} answer={shuffeledOptions[1]?.a}  />
+              <Option letter={"C. "} option={shuffeledOptions[2]?.q} answer={shuffeledOptions[2]?.a}  />
+              <Option letter={"D. "} option={shuffeledOptions[3]?.q} answer={shuffeledOptions[3]?.a}  />
             </div>
           </div>
         );
