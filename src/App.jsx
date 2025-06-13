@@ -50,7 +50,7 @@ function App() {
           <button onClick={() => setTest2(10)}>10 ta random</button>
         </div>
       ) : (
-        <FullTest data={test === 350 ? shuffleArray(dataKorp) : randomTest2} />
+        <FullTest data={test2 === 350 ? shuffleArray(dataKpi) : randomTest2} />
       )}
 
       {!test3 ? (
@@ -60,7 +60,7 @@ function App() {
           <button onClick={() => setTest3(20)}>20 ta random</button>
         </div>
       ) : (
-        <FullTest data={test === 592 ? shuffleArray([...dataKorp, ...dataKpi]) : [...randomTest, ...randomTest2]} />
+        <FullTest data={test3 === 592 ? shuffleArray([...dataKorp, ...dataKpi]) : [...randomTest, ...randomTest2]} />
       )}
     </div>
   );
