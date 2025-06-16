@@ -64,16 +64,16 @@ function App() {
 
       {!test3 ? (
         <div className="choose">
-          <p>Ikkovini aralawuvidan test sonini tanlang.</p>
-          <button onClick={() => setTest3(592)}>592 ta To'liq test</button>
-          <button onClick={() => setTest3(20)}>20 ta random</button>
+          <p>Uchta aralawuvidan test sonini tanlang.</p>
+          <button onClick={() => setTest3(919)}>919 ta To'liq test</button>
+          <button onClick={() => setTest3(30)}>30 ta random</button>
         </div>
       ) : (
         <FullTest
           data={
-            test3 === 592
-              ? shuffleArray([...dataKorp, ...dataKpi])
-              : [...randomTest, ...randomTest2]
+            test3 === 919
+              ? shuffleArray([...dataKorp, ...dataKpi, ...dataIrm])
+              : [...randomTest, ...randomTest2, ...randomTest3]
           }
         />
       )}
