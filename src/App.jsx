@@ -1,13 +1,16 @@
 import { useState } from "react";
 import "./App.css";
 import FullTest from "./FullTest";
-import { dataKorp, dataKpi } from "./assets/data";
+import { dataKorp } from "./assets/data";
+import { dataKpi } from "./assets/data2";
+import { dataIrm } from "./assets/data3";
 import { getRandomNumbersWithoutRepeating, shuffleArray } from "./extra";
 
 function App() {
   const [test, setTest] = useState(false);
   const [test2, setTest2] = useState(false);
   const [test3, setTest3] = useState(false);
+  const [test4, setTest4] = useState(false);
 
   const uniqueRandomNumbers = getRandomNumbersWithoutRepeating(241).slice(
     0,
@@ -21,7 +24,11 @@ function App() {
   );
   const randomTest2 = uniqueRandomNumbers2?.map((index) => dataKpi?.[index]);
 
-  
+  const uniqueRandomNumbers3 = getRandomNumbersWithoutRepeating(326).slice(
+    0,
+    10
+  );
+  const randomTest3 = uniqueRandomNumbers3?.map((index) => dataIrm?.[index]);
 
   return (
     <div className="window">
@@ -45,6 +52,16 @@ function App() {
         <FullTest data={test2 === 350 ? shuffleArray(dataKpi) : randomTest2} />
       )}
 
+      {!test4 ? (
+        <div className="choose">
+          <p>IRM test sonini tanlang.</p>
+          <button onClick={() => setTest4(327)}>327 ta To'liq test</button>
+          <button onClick={() => setTest4(10)}>10 ta random</button>
+        </div>
+      ) : (
+        <FullTest data={test4 === 327 ? shuffleArray(dataIrm) : randomTest3} />
+      )}
+
       {!test3 ? (
         <div className="choose">
           <p>Ikkovini aralawuvidan test sonini tanlang.</p>
@@ -52,7 +69,13 @@ function App() {
           <button onClick={() => setTest3(20)}>20 ta random</button>
         </div>
       ) : (
-        <FullTest data={test3 === 592 ? shuffleArray([...dataKorp, ...dataKpi]) : [...randomTest, ...randomTest2]} />
+        <FullTest
+          data={
+            test3 === 592
+              ? shuffleArray([...dataKorp, ...dataKpi])
+              : [...randomTest, ...randomTest2]
+          }
+        />
       )}
     </div>
   );
